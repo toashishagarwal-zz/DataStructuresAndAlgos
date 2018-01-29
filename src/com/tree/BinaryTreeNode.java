@@ -37,4 +37,8 @@ public class BinaryTreeNode {
 		postorder(root.right);
 		System.out.println(root.data + " ");
 	}
+	
+	public String toString() {
+		return this.data+" ";
+	}
 }
