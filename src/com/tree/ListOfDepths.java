@@ -5,6 +5,16 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * For a Binary Tree, create a linked list of all the nodes at same level
+ * For a depth D, there will be D Linked lists
+ * 
+ * Logic : Used the modified BFS.
+ * For simplicity sake the program created a binary search tree. However it 
+ * should very well work for normal binary tree
+ * @author ashish
+ *
+ */
 public class ListOfDepths {
 	public static void main(String[] args) {
 		BinarySearchTree bst = new BinarySearchTree();
