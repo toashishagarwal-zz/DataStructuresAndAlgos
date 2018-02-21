@@ -11,8 +11,11 @@ package com.dynamic;
 public class MinEditDistance {
 
 	public static void main(String[] args) {
-		String str1 = "azced";
-        String str2 = "abcdef";
+		/*String str1 = "azced";
+        String str2 = "abcdef";*/
+        
+        String str1 = "abcde";
+        String str2 = "abfd";
         
         int minEdits = getMinEditsDynamic(str1.toCharArray(), str2.toCharArray());
         System.out.println(minEdits);
