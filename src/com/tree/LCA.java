@@ -31,6 +31,16 @@ public class LCA {
 		System.out.println(getLCA(root, 5, 6));  // should print 5
 		System.out.println(getLCA(root, 6, 6));  // should print 6
 		System.out.println(getLCA(root, 2, 8));  // should print 7
+		
+		BinaryTreeNode lca = null;
+		lca = lca(root, 2, 6);
+		System.out.println(lca.data);
+		lca = lca(root, 5, 6);
+		System.out.println(lca.data);
+		lca = lca(root, 6, 6);
+		System.out.println(lca.data);
+		lca = lca(root, 2, 8);
+		System.out.println(lca.data);
 	}
 
 	private static int getLCA(BinaryTreeNode root, int n1, int n2) {
@@ -74,6 +84,36 @@ public class LCA {
 			return true;
 		}
 		return false;
+	}
+	
+	/**
+	 * Use this Algorithm
+	 * @param root
+	 * @param n1
+	 * @param n2
+	 * @return
+	 */
+	
+	public static BinaryTreeNode lca(BinaryTreeNode root, int n1, int n2){
+		if(root==null){
+			return null;
+		}else{
+			if(root.data==n1 ||root.data==n2){
+				return root;
+			}
+			BinaryTreeNode left = lca(root.left,n1,n2);
+			BinaryTreeNode right = lca(root.right,n1,n2);
+
+			if(left!=null && right!=null){
+				return root;
+			}
+			if(left!=null){
+				return left;
+			}else if(right!=null){
+				return right;
+			}
+			return null;
+		}
 	}
 
 }

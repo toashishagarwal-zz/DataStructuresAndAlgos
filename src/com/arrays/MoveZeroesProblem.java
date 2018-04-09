@@ -9,43 +9,66 @@ package com.arrays;
  */
 
 public class MoveZeroesProblem {
-
-	public static void main(String[] args) {
-		int[] a = {3,1,0,0,23,0,1,3,0,1,2};
-		moveZeroesToEnd(a);
-		
-		for(Integer i : a)
-			System.out.print(i+" ");
-		
-		System.out.println();
-		int[] b = {3,1,2,0,0,3,1,3,0,1,2};
-		moveZeroesToStart(b);
-		for(Integer i : b)
-			System.out.print(i+" ");
-	}
-	
-	private static void moveZeroesToEnd(int[] a) {
+	// Approach 1: This is short but involves n writes.
+	static void moveZeroesToEnd(int[] a) {
 		int count =0;
 		for(int i=0;i<a.length;i++) {
 			if(a[i] != 0)
 				a[count++] = a[i];
 		}
 		
-		while(count < a.length) {
+		while(count < a.length) 
 			a[count++] = 0;
-		}
-	}
-	
-	private static void moveZeroesToStart(int[] a) {
-		int temp=0;
-		for(int i=0,j=a.length-1;i<j;j--) {
-			if(a[i] != 0 && a[j] == 0) {
-				temp=a[j];
-				a[j]=a[i];
-				a[i]=temp;
-				i++;
-			}
-		}
 	}
 
+	// Approach 2: This is optimized and involves less no of writes
+	static void moveZeroesToEnd2(int[] a) {
+	  if(a.length == 0)
+	    return;
+	
+	  int temp=0;
+	  
+	  for(int i=0, j = a.length - 1; i<j; ) {
+	    if(a[i] == 0 && a[j] != 0) {
+		      temp = a[i];
+		      a[i] = a[j];
+		      a[j] = temp;
+		      i++;
+		      j--;
+	    } else if(a[i] == 0 && a[j]==0){
+	    	j--;
+	    } else if(a[i] != 0 && a[j] == 0) {
+	    	i++;
+	    	j--;
+	    } else {
+	    	i++;
+	    }
+	  }
+	}
+	
+	// Approach 2: This is optimized and involves less no of writes
+	static void moveZeroesToStart(int[] a) {
+	  if(a.length == 0)
+	    return;
+	
+	  int temp=0;
+	  
+	  for(int i=0, j = a.length - 1; i<j; ) {
+	    if(a[i] == 0 && a[j] != 0) {
+		      i++;
+		      j--;
+	    } else if(a[i] == 0 && a[j]==0){
+	    	i++;
+	    } else if(a[i] != 0 && a[j] == 0) {
+	    	temp = a[i];
+	    	a[i] = a[j];
+	    	a[j] = temp;
+	    	i++;
+	    	j--;
+	    } else {
+	    	j--;
+	    }
+	  }
+	}
+	
 }
